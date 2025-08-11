@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Express Studio 2.0 — Official</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <meta name="description" content="Express Studio 2.0 — games, servers, websites, community & more." />
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">
+      <img src="assets/logo.png" alt="Express Studio 2.0 logo" class="logo" />
+      <div>
+        <h1>Express Studio <span class="muted">2.0</span></h1>
+        <p class="tag">Websites · Games · Servers · Community</p>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#services">Services</a>
+      <a href="#ai">AI</a>
+      <a href="#links">Links</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cta" onclick="document.getElementById('contact').scrollIntoView()">Join Discord</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h2>Welcome to <strong>Express Studio 2.0</strong></h2>
+        <p class="lead">A fresh start — websites, games, Minecraft servers, streaming, podcasts and community. We build and we care.</p>
+        <div class="hero-cta">
+          <a class="btn" href="https://discord.gg/Mpc4jnKqFx" target="_blank" rel="noopener">Join our Discord (600+ members)</a>
+          <a class="btn alt" href="https://www.youtube.com/@ExpressStudio2X" target="_blank" rel="noopener">Watch on YouTube</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="card">
+          <h3>Now: Express Studio 2.0</h3>
+          <p>We changed from Express Studio 1.0 due to channel issues and policy concerns. 2.0 focuses on community, quality games and safe content.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About Express Studio 2.0</h2>
+      <p>Express Studio 2.0 is a brand new relaunch — born from the original Express Studio (2.5K subs). We create websites, make games, host Minecraft servers, stream, run podcasts and build community-first projects. Our Discord has free advertising and paid options. We also run channels like <em>Biblical Awareness</em> to help people grow spiritually, and plan to open a <em>Health Awareness</em> channel soon.</p>
+      <p>We aim to help people, make fun games, and build tools like an AI assistant (API-dependent). If an API is not available, the AI functionality will show a clear message so it won't break the site.</p>
+    </section>
+
+    <section id="projects" class="section projects">
+      <h2>Projects & Games</h2>
+      <div class="grid">
+        <article class="project">
+          <h3>Wake Up</h3>
+          <p>Horror experience on Roblox.</p>
+          <a href="https://www.roblox.com/games/7332779121/Wake-Up" target="_blank" rel="noopener">Play Wake Up</a>
+        </article>
+        <article class="project">
+          <h3>Pixel Craft</h3>
+          <p>Minecraft-like Roblox multiplayer.</p>
+          <a href="https://www.roblox.com/games/16542763505/Pixel-Craft-MULTIPLAYER" target="_blank" rel="noopener">Play Pixel Craft</a>
+        </article>
+        <article class="project">
+          <h3>High Life (GTA-like on ROBLOX)</h3>
+          <p>Open-world demo on Roblox.</p>
+          <a href="https://www.roblox.com/games/133460402201467/Highlife-DEMO" target="_blank" rel="noopener">Play High Life</a>
+        </article>
+        <article class="project">
+          <h3>Dead End (Unity)</h3>
+          <p>Real game in development (GTA-style)</p>
+          <p class="meta">Status: In development</p>
+        </article>
+        <article class="project">
+          <h3>Forgotten Shores</h3>
+          <p>New game — details coming soon.</p>
+          <p class="meta">Status: In development</p>
+        </article>
+        <article class="project">
+          <h3>Virtual Wardrobe</h3>
+          <p>Avatar catalog game on Roblox.</p>
+          <a href="https://www.roblox.com/games/86716578602926/Virtual-Wardrobe" target="_blank" rel="noopener">Play Virtual Wardrobe</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <h2>Services</h2>
+      <ul class="services-list">
+        <li>Custom websites (we can build your site)</li>
+        <li>Roblox game dev & publishing</li>
+        <li>Minecraft server setup & hosting</li>
+        <li>Content creation, streaming & podcasts</li>
+        <li>Community management & Discord advertising</li>
+        <li>Shop / dropshipping (coming soon)</li>
+      </ul>
+    </section>
+
+    <section id="ai" class="section ai-section">
+      <h2>AI Assistant (experimental)</h2>
+      <p>The AI uses an external API. <strong>Important:</strong> this demo does NOT include any secret API key. If an API is not available, you'll see a clear "Not available" message and the site will keep working normally.</p>
+      <div class="ai-box">
+        <textarea id="aiPrompt" placeholder="Ask the AI something..."></textarea>
+        <button id="aiSend" class="btn">Send</button>
+        <pre id="aiOutput" class="ai-output">AI output will appear here. If the backend API is not configured or unreachable, you'll see a notice instead.</pre>
+      </div>
+      <details>
+        <summary>Developer notes</summary>
+        <p>Below is the sample code you can use server-side to call an OpenRouter/OpenAI-like provider. <strong>Do not paste secret keys into the client-side code.</strong></p>
+        <pre class="code">from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="&lt;YOUR_OPENROUTER_API_KEY&gt;",
+)
+
+completion = client.chat.completions.create(
+    extra_headers={
+        "HTTP-Referer": "&lt;YOUR_SITE_URL&gt;",
+        "X-Title": "&lt;YOUR_SITE_NAME&gt;",
+    },
+    model="deepseek/deepseek-chat-v3-0324:free",
+    messages=[{"role":"user","content":"What is the meaning of life?"}]
+)
+print(completion.choices[0].message.content)</pre>
+        <p>Recommended: create a small server endpoint (e.g. /api/ai) that stores your API key on the server and proxies requests. This keeps keys secret.</p>
+      </details>
+    </section>
+
+    <section id="links" class="section">
+      <h2>All Important Links</h2>
+      <ul class="link-grid">
+        <li><a href="https://www.instagram.com/expressstudiov2/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@ExpressStudio2X" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://discord.gg/Mpc4jnKqFx" target="_blank" rel="noopener">Discord</a></li>
+        <li><a href="https://guns.lol/expressstudios" target="_blank" rel="noopener">Guns.lol (links page)</a></li>
+        <li><a href="https://www.roblox.com/users/1713920949/profile" target="_blank" rel="noopener">Roblox Profile</a></li>
+        <li><a href="https://www.pinterest.com/Express_Studios" target="_blank" rel="noopener">Pinterest</a></li>
+        <li><a href="https://sites.google.com/view/express-studio-web/home" target="_blank" rel="noopener">Old Express Studio site</a></li>
+        <li><a href="https://sites.google.com/view/earth-craft-smp/home" target="_blank" rel="noopener">Old Earth Craft site</a></li>
+        <li><a href="https://www.roblox.com/games/7332779121/Wake-Up" target="_blank" rel="noopener">Wake Up (Roblox)</a></li>
+        <li><a href="https://www.roblox.com/games/16542763505/Pixel-Craft-MULTIPLAYER" target="_blank" rel="noopener">Pixel Craft</a></li>
+        <li><a href="https://www.roblox.com/games/133460402201467/Highlife-DEMO" target="_blank" rel="noopener">High Life (demo)</a></li>
+        <li><a href="https://www.roblox.com/games/86716578602926/Virtual-Wardrobe" target="_blank" rel="noopener">Virtual Wardrobe</a></li>
+        <li><strong>TikTok:</strong> Coming soon</li>
+        <li><strong>Facebook:</strong> Not used — "it's for old ppl"</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section contact">
+      <h2>Contact & Work Requests</h2>
+      <p>Want a website, game, or server? Contact us on Discord or use the email below.</p>
+      <p><strong>Discord:</strong> <a href="https://discord.gg/Mpc4jnKqFx" target="_blank" rel="noopener">discord.gg/Mpc4jnKqFx</a></p>
+      <p><strong>More:</strong> <a href="https://guns.lol/expressstudios" target="_blank" rel="noopener">All links</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Express Studio 2.0 © <span id="year"></span>. All rights reserved.</p>
+    <p class="small">expressstudio.net</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
